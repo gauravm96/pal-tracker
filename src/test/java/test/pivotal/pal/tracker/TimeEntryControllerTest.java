@@ -5,6 +5,7 @@ import io.pivotal.pal.tracker.TimeEntryController;
 import io.pivotal.pal.tracker.TimeEntryRepository;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.internal.verification.Times;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -35,13 +36,12 @@ public class TimeEntryControllerTest {
 
         long timeEntryId = 1L;
         TimeEntry expectedResult = new TimeEntry(timeEntryId, projectId, userId, LocalDate.parse("2017-01-08"), 8);
+
         doReturn(expectedResult)
             .when(timeEntryRepository)
             .create(any(TimeEntry.class));
 
-
         ResponseEntity response = controller.create(timeEntryToCreate);
-
 
         verify(timeEntryRepository).create(timeEntryToCreate);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
@@ -114,8 +114,14 @@ public class TimeEntryControllerTest {
         doReturn(null)
             .when(timeEntryRepository)
             .update(eq(nonExistentTimeEntryId), any(TimeEntry.class));
+        long id = 1L;
+        long projectId = 987L;
+        long userId = 654L;
+        LocalDate date =  LocalDate.parse("2017-01-07");
+        int hours = 8;
 
-        ResponseEntity response = controller.update(nonExistentTimeEntryId, new TimeEntry());
+
+        ResponseEntity response = controller.update(nonExistentTimeEntryId, new TimeEntry(id, projectId, userId, date, hours));
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 
