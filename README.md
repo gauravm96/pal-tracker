@@ -147,3 +147,10 @@ cd ~/workspace/assignment-submission
 ./gradlew cloudNativeDeveloperRest -PserverUrl=https://pal-tracker-bright-sitatunga.cfapps.io
 
 
+pal-Tracker-DB
+cf create-service pal-Tracker-DB
+@ terminal --- mysql -uroot < databases/tracker/create_databases.sql
+ login : mysql -u root
+ list databases: select databases
+  switch database: use tracker_dev
+  list tables: show tables
