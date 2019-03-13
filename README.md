@@ -50,7 +50,7 @@ CF_API_URL=api.run.pivotal.io
 CF_ORG=DellEMC_PAL
 CF_SPACE=nagendra.chunduru@emc.com
 CF_USERNAME=nagendra.chunduru@emc.com
-CF_PASSWORD=Sravani@1
+CF_PASSWORD=S.....ss@1
 GITHUB_USERNAME=hainagmca
 
 886b9078ac9bcf99c9cf5d5ece2eac62ca791bf0https://pal-tracker-bright-sitatunga.cfapps.io
