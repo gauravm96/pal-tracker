@@ -30,7 +30,7 @@ public class JdbcTimeEntryRepository implements  TimeEntryRepository{
             (rs) -> rs.next() ? mapper.mapRow(rs, 1) : null;
 
     public JdbcTimeEntryRepository(DataSource dataSource) {
-        //this.dataSource = dataSource;
+
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
